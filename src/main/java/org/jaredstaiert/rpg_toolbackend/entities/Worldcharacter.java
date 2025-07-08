@@ -1,4 +1,4 @@
-package org.jaredstaiert.rpg_toolbackend;
+package org.jaredstaiert.rpg_toolbackend.entities;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;

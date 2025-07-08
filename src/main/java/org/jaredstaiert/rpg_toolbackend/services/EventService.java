@@ -1,19 +1,21 @@
 package org.jaredstaiert.rpg_toolbackend.services;
 
-import org.jaredstaiert.rpg_toolbackend.entities.Events;
-import org.jaredstaiert.rpg_toolbackend.repositories.EventsRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.jaredstaiert.rpg_toolbackend.entities.Event;
+import org.jaredstaiert.rpg_toolbackend.repositories.EventRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class EventsService {
+public class EventService {
 
-    @Autowired
-    private EventsRepository eventsRepository;
+    private final EventRepository eventRepository;
 
-    public List<Events> getAllEvents() {
-        return eventsRepository.findAll();
+    public EventService(EventRepository eventRepository) {
+        this.eventRepository = eventRepository;
+    }
+
+    public List<Event> getAllEvents() {
+        return eventRepository.findAll();
     }
 }

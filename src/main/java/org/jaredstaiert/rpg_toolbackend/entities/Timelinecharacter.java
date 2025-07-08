@@ -1,9 +1,9 @@
-package org.jaredstaiert.rpg_toolbackend;
+package org.jaredstaiert.rpg_toolbackend.entities;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.jaredstaiert.rpg_toolbackend.entities.Timelines;
+import org.jaredstaiert.rpg_toolbackend.entities.Timeline;
 
 @Entity
 @Table(name = "timelinecharacters")
@@ -15,7 +15,7 @@ public class Timelinecharacter {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "timeline_id", nullable = false)
-    private Timelines timeline;
+    private Timeline timeline;
 
     public TimelinecharacterId getId() {
         return id;
@@ -25,11 +25,11 @@ public class Timelinecharacter {
         this.id = id;
     }
 
-    public Timelines getTimeline() {
+    public Timeline getTimeline() {
         return timeline;
     }
 
-    public void setTimeline(Timelines timeline) {
+    public void setTimeline(Timeline timeline) {
         this.timeline = timeline;
     }
 
