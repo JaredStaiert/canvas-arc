@@ -5,6 +5,7 @@ import org.jaredstaiert.rpg_toolbackend.repositories.EventRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EventService {
@@ -17,5 +18,13 @@ public class EventService {
 
     public List<Event> getAllEvents() {
         return eventRepository.findAll();
+    }
+
+    public Optional<Event> getEventById(int id) {
+        return eventRepository.findById(id);
+    }
+
+    public Event saveEvent(Event event) {
+        return eventRepository.save(event);
     }
 }
