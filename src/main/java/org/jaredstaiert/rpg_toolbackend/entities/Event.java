@@ -11,11 +11,12 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "event_id", nullable = false)
-    private Integer id;
+    private Integer eventID;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    //@ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "location_id")
-    private Location location;
+    private Location locationID;
 
     @ColumnDefault("'event_name'")
     @Column(name = "event_name", nullable = false, length = Integer.MAX_VALUE)
@@ -43,20 +44,20 @@ public class Event {
 //    @Column(name = "eventid", nullable = false)
 //    private Integer eventid;
 
-    public Integer getId() {
-        return id;
+    public Integer getEventID() {
+        return eventID;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setEventID(Integer id) {
+        this.eventID = id;
     }
 
-    public Location getLocation() {
-        return location;
+    public Location getLocationID() {
+        return locationID;
     }
 
-    public void setLocation(Location location) {
-        this.location = location;
+    public void setLocationID(Location location) {
+        this.locationID = location;
     }
 
     public String getEventName() {
