@@ -11,7 +11,7 @@ public interface EventProj {
     String getEventName();
     String getEventType();
     String getEventFocus();
-    LocalDate getEventData();
+    LocalDate getEventDate();
     String getEventOutcome();
     String getEventConsequence();
 
