@@ -1,4 +1,4 @@
-package org.jaredstaiert.rpg_toolbackend.dto;
+package org.jaredstaiert.rpg_toolbackend.event;
 
 import org.jaredstaiert.rpg_toolbackend.entities.Timeline;
 

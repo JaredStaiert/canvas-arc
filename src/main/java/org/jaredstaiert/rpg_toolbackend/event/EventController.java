@@ -1,8 +1,5 @@
-package org.jaredstaiert.rpg_toolbackend.controllers;
+package org.jaredstaiert.rpg_toolbackend.event;
 
-import org.jaredstaiert.rpg_toolbackend.dto.EventProj;
-import org.jaredstaiert.rpg_toolbackend.entities.Event;
-import org.jaredstaiert.rpg_toolbackend.services.EventService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,11 +7,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/events")
-public class EventsController {
+public class EventController {
 
     private final EventService eventService;
 
-    public EventsController(EventService eventService) {
+    public EventController(EventService eventService) {
         this.eventService = eventService;
     }
 

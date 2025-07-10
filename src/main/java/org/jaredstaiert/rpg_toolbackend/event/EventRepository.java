@@ -1,7 +1,5 @@
-package org.jaredstaiert.rpg_toolbackend.repositories;
+package org.jaredstaiert.rpg_toolbackend.event;
 
-import org.jaredstaiert.rpg_toolbackend.dto.EventProj;
-import org.jaredstaiert.rpg_toolbackend.entities.Event;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

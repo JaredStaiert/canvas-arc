@@ -1,8 +1,5 @@
-package org.jaredstaiert.rpg_toolbackend.services;
+package org.jaredstaiert.rpg_toolbackend.event;
 
-import org.jaredstaiert.rpg_toolbackend.dto.EventProj;
-import org.jaredstaiert.rpg_toolbackend.entities.Event;
-import org.jaredstaiert.rpg_toolbackend.repositories.EventRepository;
 import org.jaredstaiert.rpg_toolbackend.repositories.TimelineRepository;
 import org.springframework.stereotype.Service;
 
