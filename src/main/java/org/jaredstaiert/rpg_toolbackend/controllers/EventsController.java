@@ -1,5 +1,6 @@
 package org.jaredstaiert.rpg_toolbackend.controllers;
 
+import org.jaredstaiert.rpg_toolbackend.dto.EventProj;
 import org.jaredstaiert.rpg_toolbackend.entities.Event;
 import org.jaredstaiert.rpg_toolbackend.services.EventService;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +19,8 @@ public class EventsController {
     }
 
     @GetMapping("/all-events")
-    public List<Event> getAllEvents() {
-        return eventService.getAllEvents();
+    public List<EventProj> getAllEvents() {
+        return eventService.getAllEventsWithTranslatedID();
     }
 
     @GetMapping("/{id}")

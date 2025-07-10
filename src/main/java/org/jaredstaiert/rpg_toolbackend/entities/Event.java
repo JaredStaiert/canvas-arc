@@ -16,7 +16,11 @@ public class Event {
     //@ManyToOne(fetch = FetchType.LAZY)
     @ManyToOne()
     @JoinColumn(name = "location_id")
-    private Location locationID;
+    private Location location;
+
+    @ManyToOne()
+    @JoinColumn(name= "timeline_id")
+    private Timeline timeline;
 
     @ColumnDefault("'event_name'")
     @Column(name = "event_name", nullable = false, length = Integer.MAX_VALUE)
@@ -44,6 +48,15 @@ public class Event {
 //    @Column(name = "eventid", nullable = false)
 //    private Integer eventid;
 
+
+    public Timeline getTimeline() {
+        return timeline;
+    }
+
+    public void setTimeline(Timeline timeline) {
+        this.timeline = timeline;
+    }
+
     public Integer getEventID() {
         return eventID;
     }
@@ -52,12 +65,12 @@ public class Event {
         this.eventID = id;
     }
 
-    public Location getLocationID() {
-        return locationID;
+    public Location getLocation() {
+        return location;
     }
 
-    public void setLocationID(Location location) {
-        this.locationID = location;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public String getEventName() {
