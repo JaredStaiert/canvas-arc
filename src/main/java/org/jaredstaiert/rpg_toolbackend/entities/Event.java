@@ -40,8 +40,8 @@ public class Event {
     @Column(name = "event_consequence", nullable = false, length = Integer.MAX_VALUE)
     private String eventConsequence;
 
-    @Column(name = "eventid", nullable = false)
-    private Integer eventid;
+//    @Column(name = "eventid", nullable = false)
+//    private Integer eventid;
 
     public Integer getId() {
         return id;
@@ -107,12 +107,12 @@ public class Event {
         this.eventConsequence = eventConsequence;
     }
 
-    public Integer getEventid() {
-        return eventid;
-    }
+//    public Integer getEventid() {
+//        return eventid;
+//    }
 
-    public void setEventid(Integer eventid) {
-        this.eventid = eventid;
-    }
+//    public void setEventid(Integer eventid) {
+//        this.eventid = eventid;
+//    }
 
 }
