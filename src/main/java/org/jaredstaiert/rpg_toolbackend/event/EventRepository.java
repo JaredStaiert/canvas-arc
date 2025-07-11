@@ -16,6 +16,6 @@ public interface EventRepository extends JpaRepository<Event, Integer> {
                     FROM events e
                     INNER JOIN locations l ON e.location_id = l.location_id;
             """, nativeQuery = true)
-    List<EventProj> findAllEventsTest();
+    List<EventProj> findEventsHumanReadable();
 
 }

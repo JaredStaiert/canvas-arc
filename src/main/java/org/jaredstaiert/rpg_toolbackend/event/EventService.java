@@ -26,8 +26,8 @@ public class EventService {
      * more meaningful name fields.
      * @return List of Event DTO objects
      */
-    public List<EventProj> getAllEventsWithTranslatedID() {
-        return eventRepository.findAllEventsTest();
+    public List<EventProj> getAllEventsHumanReadable() {
+        return eventRepository.findEventsHumanReadable();
     }
 
     public Optional<Event> getEventById(int id) {

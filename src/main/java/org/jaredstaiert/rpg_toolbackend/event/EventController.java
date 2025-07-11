@@ -17,7 +17,7 @@ public class EventController {
 
     @GetMapping("/all-events")
     public List<EventProj> getAllEvents() {
-        return eventService.getAllEventsWithTranslatedID();
+        return eventService.getAllEventsHumanReadable();
     }
 
     @GetMapping("/{id}")
