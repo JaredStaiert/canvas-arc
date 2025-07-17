@@ -1,6 +1,6 @@
 package org.jaredstaiert.rpg_toolbackend.event;
 
-import org.jaredstaiert.rpg_toolbackend.entities.Timeline;
+import org.jaredstaiert.rpg_toolbackend.timeline.Timeline;
 
 import java.time.LocalDate;
 

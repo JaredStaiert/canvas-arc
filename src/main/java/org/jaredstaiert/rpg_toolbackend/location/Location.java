@@ -1,4 +1,4 @@
-package org.jaredstaiert.rpg_toolbackend.entities;
+package org.jaredstaiert.rpg_toolbackend.location;
 
 import jakarta.persistence.*;
 

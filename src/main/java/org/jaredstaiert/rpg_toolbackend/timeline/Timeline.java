@@ -1,7 +1,7 @@
-package org.jaredstaiert.rpg_toolbackend.entities;
+package org.jaredstaiert.rpg_toolbackend.timeline;
 
 import jakarta.persistence.*;
-import org.jaredstaiert.rpg_toolbackend.entities.World;
+import org.jaredstaiert.rpg_toolbackend.world.World;
 
 import java.time.LocalDate;
 

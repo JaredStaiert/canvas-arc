@@ -1,9 +1,10 @@
-package org.jaredstaiert.rpg_toolbackend.entities;
+package org.jaredstaiert.rpg_toolbackend.timelinecharacter;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.jaredstaiert.rpg_toolbackend.entities.Timeline;
+import org.jaredstaiert.rpg_toolbackend.entities.TimelinecharacterId;
+import org.jaredstaiert.rpg_toolbackend.timeline.Timeline;
 
 @Entity
 @Table(name = "timelinecharacters")
