@@ -2,7 +2,7 @@ package org.jaredstaiert.rpg_toolbackend.character;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.ColumnDefault;
-import org.jaredstaiert.rpg_toolbackend.entities.User;
+import org.jaredstaiert.rpg_toolbackend.user.User;
 
 @Entity
 @Table(name = "characters")
