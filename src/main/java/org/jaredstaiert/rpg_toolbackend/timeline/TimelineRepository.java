@@ -1,6 +1,5 @@
-package org.jaredstaiert.rpg_toolbackend.repositories;
+package org.jaredstaiert.rpg_toolbackend.timeline;
 
-import org.jaredstaiert.rpg_toolbackend.timeline.Timeline;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

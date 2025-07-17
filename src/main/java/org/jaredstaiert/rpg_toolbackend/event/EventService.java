@@ -1,6 +1,6 @@
 package org.jaredstaiert.rpg_toolbackend.event;
 
-import org.jaredstaiert.rpg_toolbackend.repositories.TimelineRepository;
+import org.jaredstaiert.rpg_toolbackend.timeline.TimelineRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
