@@ -16,4 +16,8 @@ public class TimelineService {
     public List<Timeline> getAllTimelines() {
         return timelineRepository.findAll();
     }
+
+    public List<String> getDistinctTimelines() {
+        return timelineRepository.findDistinctTimelineNames();
+    }
 }

@@ -20,4 +20,9 @@ public class TimelineController {
     public List<Timeline> getAllTimelines() {
         return timelineService.getAllTimelines();
     }
+
+    @GetMapping("/distinct-timelines")
+    public List<String> getDistinctTimelines() {
+        return timelineService.getDistinctTimelines();
+    }
 }
