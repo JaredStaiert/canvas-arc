@@ -13,7 +13,8 @@ public class Timeline {
     @Column(name = "timeline_id", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+//    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "world_id")
     private World world;
 
@@ -23,8 +24,8 @@ public class Timeline {
     @Column(name = "end_date")
     private LocalDate endDate;
 
-    @Column(name = "timelineid", nullable = false)
-    private Integer timelineid;
+    @Column(name = "timeline_name")
+    private String timelineName;
 
     public Integer getId() {
         return id;
@@ -58,12 +59,11 @@ public class Timeline {
         this.endDate = endDate;
     }
 
-    public Integer getTimelineid() {
-        return timelineid;
+    public String getTimelineName() {
+        return timelineName;
     }
 
-    public void setTimelineid(Integer timelineid) {
-        this.timelineid = timelineid;
+    public void setTimelineName(String timelineName) {
+        this.timelineName = timelineName;
     }
-
 }
