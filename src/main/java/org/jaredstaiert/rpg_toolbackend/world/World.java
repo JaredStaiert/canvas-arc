@@ -18,6 +18,9 @@ public class World {
     @Column(name = "world_name", length = Integer.MAX_VALUE)
     private String worldName;
 
+    @Column(name = "world_desc", length = Integer.MAX_VALUE)
+    private String worldDesc;
+
     public Integer getId() {
         return id;
     }
@@ -42,4 +45,11 @@ public class World {
         this.worldName = worldName;
     }
 
+    public String getWorldDesc() {
+        return worldDesc;
+    }
+
+    public void setWorldDesc(String worldDesc) {
+        this.worldDesc = worldDesc;
+    }
 }
