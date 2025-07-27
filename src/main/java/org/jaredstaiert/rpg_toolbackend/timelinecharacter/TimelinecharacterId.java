@@ -1,4 +1,4 @@
-package org.jaredstaiert.rpg_toolbackend.entities;
+package org.jaredstaiert.rpg_toolbackend.timelinecharacter;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
