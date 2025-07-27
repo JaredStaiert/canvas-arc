@@ -17,7 +17,7 @@ public class CharacterController {
     }
 
     @GetMapping("/all-characters")
-    public List<Character> getAllCharacters() {
+    public List<CharacterSummary> getAllCharacters() {
         return characterService.getAllCharacters();
     }
 }

@@ -13,7 +13,7 @@ public class CharacterService {
         this.characterRepository = characterRepository;
     }
 
-    public List<Character> getAllCharacters() {
-        return characterRepository.findAll();
+    public List<CharacterSummary> getAllCharacters() {
+        return characterRepository.findAllProjectedBy();
     }
 }
