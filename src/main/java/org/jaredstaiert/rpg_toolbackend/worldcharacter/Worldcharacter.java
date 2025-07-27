@@ -3,7 +3,6 @@ package org.jaredstaiert.rpg_toolbackend.worldcharacter;
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.jaredstaiert.rpg_toolbackend.entities.WorldcharacterId;
 import org.jaredstaiert.rpg_toolbackend.world.World;
 
 @Entity
