@@ -10,9 +10,10 @@ public class Character {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "character_id", nullable = false)
-    private Integer id;
+    private Integer characterId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+//    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -28,12 +29,12 @@ public class Character {
     @Column(name = "character_bio", nullable = false, length = Integer.MAX_VALUE)
     private String characterBio;
 
-    public Integer getId() {
-        return id;
+    public Integer getCharacterId() {
+        return characterId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setCharacterId(Integer id) {
+        this.characterId = id;
     }
 
     public User getUser() {
