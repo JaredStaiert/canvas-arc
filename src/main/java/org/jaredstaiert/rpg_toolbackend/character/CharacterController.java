@@ -18,6 +18,6 @@ public class CharacterController {
 
     @GetMapping("/all-characters")
     public List<CharacterSummary> getAllCharacters() {
-        return characterService.getAllCharacters();
+        return characterService.getAllCharactersById();
     }
 }
