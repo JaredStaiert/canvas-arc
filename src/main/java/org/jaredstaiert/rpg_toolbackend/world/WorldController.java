@@ -1,8 +1,6 @@
 package org.jaredstaiert.rpg_toolbackend.world;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +17,11 @@ public class WorldController {
     @GetMapping("/all-worlds")
     public List<World> getAllWorlds() {
         return worldService.getAllWorlds();
+    }
+
+    @GetMapping("/edit/{id}")
+    public World getWorldToEdit(@PathVariable Integer id) {
+        return worldService.getWorldById(id);
     }
 
 }

@@ -17,4 +17,8 @@ public class WorldService {
         return worldRepository.findAll();
     }
 
+    public World getWorldById(Integer id) {
+        return worldRepository.findById(id).orElse(null);
+    }
+
 }
