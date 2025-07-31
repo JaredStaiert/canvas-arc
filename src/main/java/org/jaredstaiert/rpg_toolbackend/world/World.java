@@ -10,7 +10,7 @@ public class World {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "world_id", nullable = false)
-    private Integer id;
+    private Integer worldID;
 
     @Column(name = "date_created")
     private LocalDate dateCreated;
@@ -21,12 +21,12 @@ public class World {
     @Column(name = "world_desc", length = Integer.MAX_VALUE)
     private String worldDesc;
 
-    public Integer getId() {
-        return id;
+    public Integer getWorldID() {
+        return worldID;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setWorldID(Integer id) {
+        this.worldID = id;
     }
 
     public LocalDate getDateCreated() {
