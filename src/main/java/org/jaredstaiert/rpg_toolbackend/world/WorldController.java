@@ -19,7 +19,7 @@ public class WorldController {
         return worldService.getAllWorlds();
     }
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("/edit/get/{id}")
     public World getWorldToEdit(@PathVariable Integer id) {
         return worldService.getWorldById(id);
     }
