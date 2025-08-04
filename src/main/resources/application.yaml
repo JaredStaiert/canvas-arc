@@ -1,0 +1,39 @@
+auth0-issuer: dev-fn76wgcqyzxwers2.us.auth0.com/
+auth0-secret: ""
+
+spring:
+  application:
+    name: rpg_tool-backend
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/rpg_tool
+    username: postgres
+    password: postgres
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+
+  lifecycle:
+    timeout-per-shutdown-phase: 30
+
+  security:
+    oauth2:
+      client:
+        provider:
+          auth0:
+            issuer-uri: https://${auth0-issuer}
+        registration:
+          auth0-confidential-user:
+            authorization-grant-type: authorization_code
+            client-name: Auth0
+            client-id: WD3lk7ioptuMm7oXSDmQAQwemLQEzhb3
+            client-secret: ${auth0-secret}
+            provider: auth0
+            scope: openid,profile,email,offline_access
+
+server:
+  ssl:
+    enabled: false
