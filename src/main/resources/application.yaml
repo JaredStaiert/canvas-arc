@@ -1,0 +1,61 @@
+spring:
+  application:
+    name: rpg_tool-backend
+  config:
+    import: secrets.yaml
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/rpg_tool
+    username: postgres
+    password: postgres
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+
+  lifecycle:
+    timeout-per-shutdown-phase: 30
+
+  security:
+    oauth2:
+      client:
+        registration:
+          auth0-confidential-user:
+            authorization-grant-type: authorization_code
+            client-name: Auth0
+            client-id: ${auth0-cid}
+            client-secret: ${auth0-secret}
+            provider: auth0
+            redirect-uri: https://localhost:8443/login/oauth2/code/auth0-confidential-user
+            scope:
+              - openid
+              - profile
+              - email
+
+        provider:
+          auth0:
+            issuer-uri: https://${auth0-issuer}
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+        oauth2: DEBUG
+
+server:
+  port: 8443
+  ssl:
+    enabled: true
+    key-store: classpath:keystore.p12
+    key-store-password: ${key-sign}
+    key-store-type: PKCS12
+    key-alias: spring-boot-ssl
+  servlet:
+    session:
+      timeout: 1s
+      cookie:
+       same-site: None
+       secure: true
