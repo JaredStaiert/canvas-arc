@@ -6,8 +6,10 @@
 - Security and users session via Spring Security
 
 ## ENV / REPO Notes
-- This is a monorepo containing the frontend, backend, and DB projects for ease of viewing. Development of each component took part largely in individual repositories.
+This is a monorepo containing the frontend, backend, and DB projects for ease of viewing. Development of each component took part largely in individual repositories. The following files are not kept in the repo for security purposes and will need to be replaced:
+
 - (self) Signed SSL cert needed in ```backend/src/main/resources``` directory. Update in application.yaml under server.ssl
+
 - Config file _secrets.yaml_ in the ```backend/src/main/resources``` directory.
   - _secrets.yaml_ should contain following:
     - auth0-issuer: _Domain of authentication server_
