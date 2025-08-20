@@ -4,10 +4,44 @@
 
 ## Oauth2 Authorization Code Flow
 
+Oauth2 Authorization Code Flow implemented with Java Spring oauth2.
+
+```mermaid
+---
+config:
+  layout: dagre
+---
+flowchart TD
+    A["React Application"] -- 1 send login request --> B["Spring Boot Server"];
+    B -- 2 redirect to login page --> C["Auth0 Server"];
+    C -- 3 validate credentials --> D[("Auth0 User Database")];
+    D --> C;
+    C -- 4 send access token --> B;
+    B -- 5 create security context --> E["Spring Security Context"];
+    E --> B;
+    B -- 6 send JSSESIONID cookie --> A;
+    A -- 7+ Access API with  cookie --> F["REST API"];
+    F --> A;
+    F --- B;
+    A@{ shape: rounded};
+    B@{ shape: rounded};
+    C@{ shape: rounded};
+    E@{ shape: subproc};
+    F@{ shape: subproc};
+    style A fill:#BBDEFB;
+    style B fill:#C8E6C9;
+    style C fill:#FFCDD2;
+    style D fill:#FFCDD2;
+    style E fill:#C8E6C9;
+    style F fill:#C8E6C9;
+
+
+React application context does not contain any secrets
+
 ![login](https://github.com/user-attachments/assets/a4fe1e81-9e61-4b07-a85c-dceb714c3091)
 
 
-- Oauth2 Authorization Code Flow implemented with Auth0
+
 - Complex and peformant interaction with PostgreSQL database via native SQL and ORM (Spring Data JPA)
 - Security and users session via Spring Security
 
