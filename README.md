@@ -5,6 +5,12 @@
 - Complex and peformant interaction with PostgreSQL database via native SQL and ORM (Spring Data JPA)
 - Security and users session via Spring Security
 
-## ENV Notes
-- Signed SSL needed in /resources directory. Update in application.yaml under server.ssl
-- Config file secrets.yaml in the /resources directory. Contains secrets required in application.yaml
+## ENV / REPO Notes
+- This is a monorepo containing the frontend, backend, and DB projects for ease of viewing. Development of each component took part largely in individual repositories.
+- (self) Signed SSL cert needed in ```backend/src/main/resources``` directory. Update in application.yaml under server.ssl
+- Config file _secrets.yaml_ in the ```backend/src/main/resources``` directory.
+  - _secrets.yaml_ should contain following:
+    - auth0-issuer: _Domain of authentication server_
+    - auth0-secret: _Secret for auth server_
+    - auth0-cid: _Client ID (specific application ID for auth0)_
+    - key-sign: _Password for SSL cert_
