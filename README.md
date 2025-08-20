@@ -34,7 +34,7 @@ flowchart TD
     style D fill:#FFCDD2
     style E fill:#C8E6C9
     style F fill:#C8E6C9
-
+```
 
 React application context does not contain any secrets
 
