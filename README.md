@@ -4,7 +4,8 @@
 
 ## Oauth2 Authorization Code Flow
 
-https://github.com/user-attachments/assets/80884f71-e7cb-4d33-a866-8e6e64083cdf
+![login](https://github.com/user-attachments/assets/a4fe1e81-9e61-4b07-a85c-dceb714c3091)
+
 
 - Oauth2 Authorization Code Flow implemented with Auth0
 - Complex and peformant interaction with PostgreSQL database via native SQL and ORM (Spring Data JPA)
