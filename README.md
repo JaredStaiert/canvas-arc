@@ -28,12 +28,12 @@ flowchart TD
     C@{ shape: rounded}
     E@{ shape: subproc}
     F@{ shape: subproc}
-    style A fill:#BBDEFB
-    style B fill:#C8E6C9
-    style C fill:#FFCDD2
-    style D fill:#FFCDD2
-    style E fill:#C8E6C9
-    style F fill:#C8E6C9
+    style A fill:#BBDEFB,color:#000000
+    style B fill:#C8E6C9,color:#000000
+    style C fill:#FFCDD2,color:#000000
+    style D fill:#FFCDD2,color:#000000
+    style E fill:#C8E6C9,color:#000000
+    style F fill:#C8E6C9,color:#000000
 ```
 
 React application context does not contain any secrets
