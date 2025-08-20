@@ -1,9 +1,18 @@
 # Readme
 
 # Features
+
+## Oauth2 Authorization Code Flow
+
+https://github.com/user-attachments/assets/80884f71-e7cb-4d33-a866-8e6e64083cdf
+
 - Oauth2 Authorization Code Flow implemented with Auth0
 - Complex and peformant interaction with PostgreSQL database via native SQL and ORM (Spring Data JPA)
 - Security and users session via Spring Security
+
+
+
+
 
 # ENV / REPO Notes
 This is a monorepo containing the frontend, backend, and DB projects for ease of viewing. Development of each component took part largely in individual repositories. 
