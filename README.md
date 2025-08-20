@@ -12,28 +12,28 @@ config:
   layout: dagre
 ---
 flowchart TD
-    A["React Application"] -- 1 send login request --> B["Spring Boot Server"];
-    B -- 2 redirect to login page --> C["Auth0 Server"];
-    C -- 3 validate credentials --> D[("Auth0 User Database")];
-    D --> C;
-    C -- 4 send access token --> B;
-    B -- 5 create security context --> E["Spring Security Context"];
-    E --> B;
-    B -- 6 send JSSESIONID cookie --> A;
-    A -- 7+ Access API with  cookie --> F["REST API"];
-    F --> A;
-    F --- B;
-    A@{ shape: rounded};
-    B@{ shape: rounded};
-    C@{ shape: rounded};
-    E@{ shape: subproc};
-    F@{ shape: subproc};
-    style A fill:#BBDEFB;
-    style B fill:#C8E6C9;
-    style C fill:#FFCDD2;
-    style D fill:#FFCDD2;
-    style E fill:#C8E6C9;
-    style F fill:#C8E6C9;
+    A["React Application"] -- 1 send login request --> B["Spring Boot Server"]
+    B -- 2 redirect to login page --> C["Auth0 Server"]
+    C -- 3 validate credentials --> D[("Auth0 User Database")]
+    D --> C
+    C -- 4 send access token --> B
+    B -- 5 create security context --> E["Spring Security Context"]
+    E --> B
+    B -- 6 send JSSESIONID cookie --> A
+    A -- 7+ Access API with  cookie --> F["REST API"]
+    F --> A
+    F --- B
+    A@{ shape: rounded}
+    B@{ shape: rounded}
+    C@{ shape: rounded}
+    E@{ shape: subproc}
+    F@{ shape: subproc}
+    style A fill:#BBDEFB
+    style B fill:#C8E6C9
+    style C fill:#FFCDD2
+    style D fill:#FFCDD2
+    style E fill:#C8E6C9
+    style F fill:#C8E6C9
 
 
 React application context does not contain any secrets
