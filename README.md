@@ -4,8 +4,9 @@
 
 ## Oauth2 Authorization Code Flow
 
-Oauth2 Authorization Code Flow implemented with Java Spring oauth2.
+Oauth2 Authorization Code Flow implemented with Java Spring oauth2, Spring Security, and Auth0
 
+Diagram:
 ```mermaid
 ---
 config:
@@ -35,19 +36,22 @@ flowchart TD
     style E fill:#C8E6C9,color:#000000
     style F fill:#C8E6C9,color:#000000
 ```
-
-React application context does not contain any secrets
-
+Login page in action: (user here clicks logout and is returned to original endpoint)
 ![login](https://github.com/user-attachments/assets/a4fe1e81-9e61-4b07-a85c-dceb714c3091)
 
+## Database Interaction
 
+Complex and peformant interaction with PostgreSQL database via native SQL and ORM (Spring Data JPA)
 
-- Complex and peformant interaction with PostgreSQL database via native SQL and ORM (Spring Data JPA)
-- Security and users session via Spring Security
+## User Sessions
+Security and users sessions handled via Spring Security
 
+# In Development
 
-
-
+- Further work on the user interface, including more and more complex user interactions and utilites.
+- Expanded role-based user interactions; including ADMIN and USER roles.
+- Containerization, via Docker, and eventually a live example hosted.
+- CI pipeline
 
 # ENV / REPO Notes
 This is a monorepo containing the frontend, backend, and DB projects for ease of viewing. Development of each component took part largely in individual repositories. 
