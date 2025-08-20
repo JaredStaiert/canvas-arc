@@ -12,7 +12,7 @@ config:
   layout: dagre
 ---
 flowchart TD
-    A["React Application"] -- 1 send login request --> B["Spring Boot Server"]
+    A["React Frontend"] -- 1 send login request --> B["Spring Boot Backend"]
     B -- 2 redirect to login page --> C["Auth0 Server"]
     C -- 3 validate credentials --> D[("Auth0 User Database")]
     D --> C
