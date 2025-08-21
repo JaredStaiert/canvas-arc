@@ -1,4 +1,4 @@
-import { Button, Menu } from "@mantine/core";
+import { Menu } from "@mantine/core";
 import React, { useState } from "react";
 import { useAuth } from "@/login/AuthProvider";
 import { UserButton } from "./UserButton";
@@ -15,9 +15,9 @@ function AppHeaderMenu() {
             >
                 <Menu.Target>
                     <UserButton
-                        image="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-8.png"
-                        name="Harriette Spoonlicker"
-                        email="hspoonlicker@outlook.com"
+                        image=""
+                        name="John Dee"
+                        email="jdoe@email.com"
                     />
                 </Menu.Target>
                 <Menu.Dropdown>

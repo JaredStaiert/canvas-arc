@@ -31,7 +31,7 @@ export default function App() {
                           navbar={{
                               width: 300,
                               breakpoint: 'sm',
-                              collapsed: { mobile: mobileOpened, desktop: desktopOpened },
+                              collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
                           }}
                       >
                           <AppShell.Header>
@@ -42,8 +42,8 @@ export default function App() {
                               <Group
                                   justify="flex-end"
                                   pos="fixed"
-                                  top="0.6rem"
-                                  right="1rem"
+                                  top="-0.2rem"
+                                  left="3rem"
                               >
                                   <AppHeaderMenu/>
                               </Group>
