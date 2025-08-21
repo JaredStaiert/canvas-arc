@@ -1,4 +1,4 @@
-package org.jaredstaiert.canvas_arc.auth.config;
+package org.jaredstaiert.canvas_arc.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
