@@ -24,4 +24,9 @@ public class WorldController {
         return worldService.getWorldById(id);
     }
 
+    @PostMapping("/save")
+    public WorldDTO saveWorld(@RequestBody WorldDTO worldDTO) {
+        return worldService.saveWorld(worldDTO);
+    }
+
 }

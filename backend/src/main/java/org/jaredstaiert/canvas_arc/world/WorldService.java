@@ -21,4 +21,18 @@ public class WorldService {
         return worldRepository.findById(id).orElse(null);
     }
 
+    public WorldDTO saveWorld(WorldDTO worldInfo) {
+        World newWorld = new World(
+                worldInfo.user_name(),
+                worldInfo.world_name(),
+                worldInfo.date_created(),
+                worldInfo.world_desc());
+
+        World success = worldRepository.save(newWorld);
+        return new WorldDTO(
+                success.getUserName(),
+                success.getWorldName(),
+                success.getDateCreated(),
+                success.getWorldDesc());
+    }
 }

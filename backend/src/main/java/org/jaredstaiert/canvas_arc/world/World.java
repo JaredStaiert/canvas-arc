@@ -12,6 +12,9 @@ public class World {
     @Column(name = "world_id", nullable = false)
     private Integer worldID;
 
+    @Column(name = "user_name")
+    private String userName;
+
     @Column(name = "date_created")
     private LocalDate dateCreated;
 
@@ -20,6 +23,13 @@ public class World {
 
     @Column(name = "world_desc", length = Integer.MAX_VALUE)
     private String worldDesc;
+
+    public World(String userName, String worldName, LocalDate dateCreated, String worldDesc) {
+        this.userName = userName;
+        this.dateCreated = dateCreated;
+        this.worldName = worldName;
+        this.worldDesc = worldDesc;
+    }
 
     public Integer getWorldID() {
         return worldID;
@@ -52,4 +62,10 @@ public class World {
     public void setWorldDesc(String worldDesc) {
         this.worldDesc = worldDesc;
     }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String user_name) {}
 }
