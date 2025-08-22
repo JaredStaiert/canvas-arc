@@ -31,6 +31,8 @@ public class World {
         this.worldDesc = worldDesc;
     }
 
+    public World() {}
+
     public Integer getWorldID() {
         return worldID;
     }

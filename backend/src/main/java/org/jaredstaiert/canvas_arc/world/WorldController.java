@@ -1,5 +1,6 @@
 package org.jaredstaiert.canvas_arc.world;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,8 +20,14 @@ public class WorldController {
         return worldService.getAllWorlds();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<WorldDTO> getWorldById(@PathVariable Integer id) {
+        WorldDTO response = worldService.getWorldById(id);
+        return ResponseEntity.ok(response);
+    }
+
     @GetMapping("/edit/get/{id}")
-    public World getWorldToEdit(@PathVariable Integer id) {
+    public WorldDTO getWorldToEdit(@PathVariable Integer id) {
         return worldService.getWorldById(id);
     }
 

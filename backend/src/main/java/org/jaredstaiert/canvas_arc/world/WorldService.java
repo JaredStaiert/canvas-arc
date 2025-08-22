@@ -14,11 +14,24 @@ public class WorldService {
     }
 
     public List<World> getAllWorlds() {
+        //TODO: convert return type to WorldDTO
         return worldRepository.findAll();
     }
 
-    public World getWorldById(Integer id) {
-        return worldRepository.findById(id).orElse(null);
+    public WorldDTO getWorldById(Integer id) {
+        World world = worldRepository.findById(id).orElse(null);
+
+        if  (world == null) {
+            return null;
+        }
+
+        return new WorldDTO(
+                world.getWorldID(),
+                world.getUserName(),
+                world.getWorldName(),
+                world.getDateCreated(),
+                world.getWorldDesc()
+        );
     }
 
     public WorldDTO saveWorld(WorldDTO worldInfo) {
@@ -30,9 +43,11 @@ public class WorldService {
 
         World success = worldRepository.save(newWorld);
         return new WorldDTO(
+                success.getWorldID(),
                 success.getUserName(),
                 success.getWorldName(),
                 success.getDateCreated(),
-                success.getWorldDesc());
+                success.getWorldDesc()
+        );
     }
 }
