@@ -16,7 +16,7 @@ public class WorldController {
     }
 
     @GetMapping("/all-worlds")
-    public List<World> getAllWorlds() {
+    public List<WorldDTO> getAllWorlds() {
         return worldService.getAllWorlds();
     }
 

@@ -13,9 +13,17 @@ public class WorldService {
         this.worldRepository = worldRepository;
     }
 
-    public List<World> getAllWorlds() {
-        //TODO: convert return type to WorldDTO
-        return worldRepository.findAll();
+    public List<WorldDTO> getAllWorlds() {
+        List<World> worlds = worldRepository.findAll();
+
+        return worlds.stream()
+                .map(world ->
+                        new WorldDTO(world.getWorldID(),
+                                world.getUserName(),
+                                world.getWorldName(),
+                                world.getDateCreated(),
+                                world.getWorldDesc()))
+                .toList();
     }
 
     public WorldDTO getWorldById(Integer id) {

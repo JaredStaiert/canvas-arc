@@ -20,8 +20,11 @@ public class CharacterService {
      * @return All characters sorted by characterId
      */
     public List<CharacterSummary> getAllCharactersById() {
+        // Have to sort in service layer because the postgres STRING_AGG can mess with the sorting
         List<CharacterSummary> unsorted = characterRepository.findAllProjectedBy();
-        return unsorted.stream().sorted(Comparator.comparingInt(CharacterSummary::getCharacterId))
+
+        return unsorted.stream()
+                .sorted(Comparator.comparingInt(CharacterSummary::getCharacterId))
                 .collect(Collectors.toList());
     }
 }
