@@ -13,6 +13,10 @@ public class WorldService {
         this.worldRepository = worldRepository;
     }
 
+    /**
+     * Gets all worlds in database.
+     * @return List of WorldDTO objects.
+     */
     public List<WorldDTO> getAllWorlds() {
         List<World> worlds = worldRepository.findAll();
 
@@ -26,6 +30,11 @@ public class WorldService {
                 .toList();
     }
 
+    /**
+     * Gets world from database by id.
+     * @param id Integer id value.
+     * @return WorldDTO object.
+     */
     public WorldDTO getWorldById(Integer id) {
         World world = worldRepository.findById(id).orElse(null);
 
@@ -42,6 +51,11 @@ public class WorldService {
         );
     }
 
+    /**
+     * Saves provided WorldDTO as new world record in database.
+     * @param worldInfo WorldDTO object to be saved.
+     * @return WorldDTO retrieved from database.
+     */
     public WorldDTO saveWorld(WorldDTO worldInfo) {
         World newWorld = new World(
                 worldInfo.user_name(),
