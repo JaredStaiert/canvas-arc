@@ -1,4 +1,4 @@
-package org.jaredstaiert.canvas_arc;
+package org.jaredstaiert.canvas_arc.service;
 
 import org.jaredstaiert.canvas_arc.world.World;
 import org.jaredstaiert.canvas_arc.world.WorldDTO;
@@ -12,12 +12,11 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class WorldServiceTest {
@@ -40,74 +39,53 @@ public class WorldServiceTest {
     }
 
     @Test
-    void testGetWorldById_returnsDTO() {
-        // Arrange
-        int testWorldId = 1;
-
-        World mockWorld = new World();
-        mockWorld.setWorldID(testWorldId);
-        when(worldRepository.findById(testWorldId))
-                .thenReturn(java.util.Optional.of(mockWorld));
-
-        // Act
-        WorldDTO result = worldService.getWorldById(testWorldId);
-
-        // Assert
-        assertThat(result).isNotNull();
-        assertInstanceOf(WorldDTO.class, result);
-        verify(worldRepository).findById(testWorldId);
-    }
-
-    @Test
     void testGetWorldById_returnsCorrectWorld() {
-        // Arrange
         int testWorldId = 1;
         LocalDate testDate = LocalDate.of(2025, 8, 22);
 
         World mockWorld = new World("name", "world", testDate, "desc");
         mockWorld.setWorldID(testWorldId);
-
         when(worldRepository.findById(testWorldId))
                 .thenReturn(java.util.Optional.of(mockWorld));
 
-        WorldDTO baselineDTO = new WorldDTO(
-                testWorldId,
-                "name",
-                "world",
-                testDate,
-                "desc");
-
-        // Act
         WorldDTO result = worldService.getWorldById(testWorldId);
 
-        // Assert
         assertThat(result).isNotNull();
-        assertEquals(result, baselineDTO, "DTO should contain same data as Entity");
+        assertEquals(result.world_id(), mockWorld.getWorldID());
+        assertEquals(result.user_name(), mockWorld.getUserName());
+        assertEquals(result.world_name(), mockWorld.getWorldName());
+        assertEquals(result.date_created(), mockWorld.getDateCreated());
+        assertEquals(result.world_desc(), mockWorld.getWorldDesc());
         verify(worldRepository).findById(testWorldId);
     }
 
 
     @Test
-    void testGetAllWorlds_returnsTypeList() {
+    void testGetAllWorlds_returnsCorrectWorlds() {
         int id1 = 1;
         int id2 = 2;
+        LocalDate testDate = LocalDate.of(2025, 8, 22);
 
-        World mockWorld1 = new World();
-        mockWorld1.setWorldID(id1);
-        World mockWorld2 = new World();
+        World mockWorld = new World("", "", testDate, "");
+        mockWorld.setWorldID(id1);
+        World mockWorld2 = new World("", "", testDate, "");
         mockWorld2.setWorldID(id2);
-        //TODO: Write test after return type of WorldService.getAllWorlds is changed to WorldDTO
-    }
 
-    @Test
-    void testGetAllWorlds_returnsListDTO() {
-        //Arrange
+        List<World> baselineWorldList = Arrays.asList(mockWorld, mockWorld2);
+        when(worldRepository.findAll())
+                .thenReturn(baselineWorldList);
 
-    }
+        List<WorldDTO> resultWorldDTOList = worldService.getAllWorlds();
 
-    @Test
-    void testGetAllWorlds_returnsCorrectWorlds() {
-
+        assertThat(resultWorldDTOList).isNotNull();
+        assertInstanceOf(List.class, resultWorldDTOList);
+        for (int i = 0; i < resultWorldDTOList.size(); i++) {
+            assertEquals(resultWorldDTOList.get(i).world_id(), baselineWorldList.get(i).getWorldID());
+            assertEquals(resultWorldDTOList.get(i).user_name(), baselineWorldList.get(i).getUserName());
+            assertEquals(resultWorldDTOList.get(i).world_name(), baselineWorldList.get(i).getWorldName());
+            assertEquals(resultWorldDTOList.get(i).date_created(), baselineWorldList.get(i).getDateCreated());
+            assertEquals(resultWorldDTOList.get(i).world_desc(), baselineWorldList.get(i).getWorldDesc());
+        }
     }
 
 //    @Test
