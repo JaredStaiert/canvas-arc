@@ -1,0 +1,11 @@
+services:
+
+  spring:
+    image: canvas-arc-spring
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    build: ./backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://host.docker.internal:5432/rpg_tool
+    ports:
+      - "8443:8443"
