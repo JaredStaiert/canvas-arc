@@ -1,5 +1,6 @@
 package org.jaredstaiert.canvas_arc.auth;
 
+import org.jaredstaiert.canvas_arc.user.UserDTO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -33,10 +34,12 @@ public class AuthController {
         System.out.println(principal.toString());
         switch (principal) {
             case OidcUser oidcUser -> {
-                return ResponseEntity.ok(oidcUser.getAttributes());
+                UserDTO response = new UserDTO(oidcUser.getAttribute("nickname"), oidcUser.getAttribute("email"));
+                return ResponseEntity.ok(response);
             }
             case OAuth2User oauth2User -> {
-                return ResponseEntity.ok(oauth2User.getAttributes());
+                UserDTO response = new UserDTO(oauth2User.getAttribute("nickname"), oauth2User.getAttribute("email"));
+                return ResponseEntity.ok(response);
             }
             default -> {
                 return ResponseEntity.status(401).body(null);
