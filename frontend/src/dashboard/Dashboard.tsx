@@ -1,13 +1,14 @@
 import { Flex, Text, Badge, Button, Card, Group, Image } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
 import { getWorlds }from "@/api/world_api";
-import DashboardCharacterComponent from "@/dashboard/DashboardCharacterComponent";
 
 function Dashboard() {
 
     const query = useQuery({ queryKey: ["all-worlds"], queryFn: getWorlds });
 
-
+    if (query.isLoading) {
+      return <div>Loading...</div>;
+    }
 
     return (
         <>
@@ -30,7 +31,7 @@ function Dashboard() {
                             padding="lg"
                             radius="md"
                             withBorder
-                            key={world.worldName}
+                            key={`${world.worldName}_dashboard`}
                             // mih="25em"
                             miw="25em"
                         >

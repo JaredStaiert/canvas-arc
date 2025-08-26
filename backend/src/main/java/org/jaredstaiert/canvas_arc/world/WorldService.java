@@ -58,10 +58,10 @@ public class WorldService {
      */
     public WorldDTO saveWorld(WorldDTO worldInfo) {
         World newWorld = new World(
-                worldInfo.user_name(),
-                worldInfo.world_name(),
-                worldInfo.date_created(),
-                worldInfo.world_desc());
+                worldInfo.userName(),
+                worldInfo.worldName(),
+                worldInfo.dateCreated(),
+                worldInfo.worldDesc());
 
         World success = worldRepository.save(newWorld);
         return new WorldDTO(

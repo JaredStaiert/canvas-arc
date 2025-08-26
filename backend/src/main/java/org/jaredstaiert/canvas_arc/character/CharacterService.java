@@ -20,7 +20,8 @@ public class CharacterService {
      * @return All characters sorted by characterId
      */
     public List<CharacterSummary> getAllCharactersById() {
-        // Have to sort in service layer because the postgres STRING_AGG can mess with the sorting
+        // Have to sort in service layer because the postgres STRING_AGG can mess with the sorting.
+        // Don't sort here if DB returns sorted results or sorting is done in web layer.
         List<CharacterSummary> unsorted = characterRepository.findAllProjectedBy();
 
         return unsorted.stream()

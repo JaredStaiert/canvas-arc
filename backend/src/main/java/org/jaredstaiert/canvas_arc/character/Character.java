@@ -14,8 +14,8 @@ public class Character {
 
 //    @ManyToOne(fetch = FetchType.LAZY)
     @ManyToOne()
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "user_name")
+    private User userName;
 
     @ColumnDefault("'character_name'")
     @Column(name = "character_name", nullable = false, length = Integer.MAX_VALUE)
@@ -37,12 +37,12 @@ public class Character {
         this.characterId = id;
     }
 
-    public User getUser() {
-        return user;
+    public User getUserName() {
+        return userName;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserName(User user) {
+        this.userName = user;
     }
 
     public String getCharacterName() {
