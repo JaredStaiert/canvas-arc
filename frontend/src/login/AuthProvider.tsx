@@ -5,7 +5,7 @@ import { getAuth } from "@/api/auth_api";
 
 export interface AuthUser {
     email?: string;
-    name?: string;
+    userName?: string;
     [key: string]: any;
 }
 
@@ -22,7 +22,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [user, setUser] = useState<AuthUser | null>(null);
 
-    const { isLoading, isError, data, error } = useQuery({
+    const { isLoading, isError, data } = useQuery({
         queryKey: ["auth"],
         queryFn: getAuth,
         retry: false

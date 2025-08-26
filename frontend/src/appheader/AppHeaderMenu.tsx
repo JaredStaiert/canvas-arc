@@ -4,7 +4,7 @@ import { useAuth } from "@/login/AuthProvider";
 import { UserButton } from "./UserButton";
 
 function AppHeaderMenu() {
-    const { logout } = useAuth();
+    const { logout, user } = useAuth();
     const [opened, setOpened] = useState(false);
 
     return (
@@ -16,8 +16,8 @@ function AppHeaderMenu() {
                 <Menu.Target>
                     <UserButton
                         image=""
-                        name="John Dee"
-                        email="jdoe@email.com"
+                        name={user?.userName}
+                        email={user?.email}
                     />
                 </Menu.Target>
                 <Menu.Dropdown>
