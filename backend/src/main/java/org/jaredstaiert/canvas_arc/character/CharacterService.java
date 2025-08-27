@@ -28,4 +28,8 @@ public class CharacterService {
                 .sorted(Comparator.comparingInt(CharacterSummary::getCharacterId))
                 .collect(Collectors.toList());
     }
+
+    public List<CharacterSummary> getAllCharactersByUserName(String userName) {
+        return characterRepository.findByUserName(userName);
+    }
 }

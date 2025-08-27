@@ -1,8 +1,7 @@
 package org.jaredstaiert.canvas_arc.character;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,7 +16,12 @@ public class CharacterController {
     }
 
     @GetMapping("/all-characters")
-    public List<org.jaredstaiert.canvas_arc.character.CharacterSummary> getAllCharacters() {
+    public List<CharacterSummary> getAllCharacters() {
         return characterService.getAllCharactersById();
+    }
+
+    @GetMapping("/character")
+    public List<CharacterSummary> getCharacterByUserName(@RequestParam String userName) {
+        return characterService.getAllCharactersByUserName(userName);
     }
 }
