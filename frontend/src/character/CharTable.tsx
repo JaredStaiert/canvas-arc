@@ -1,46 +1,69 @@
+import { useState } from 'react';
 import { useQuery } from "@tanstack/react-query";
-import { getCharacters } from "@/api/character_api";
-import { Badge, Group, Table } from "@mantine/core";
+import { Badge, Checkbox, Group, Table } from '@mantine/core';
+import { Character, getCharactersByUser } from '@/api/character_api';
+import { useAuth } from '@/login/AuthProvider';
+
 
 function CharTable() {
+    const { user } = useAuth();
+    const [selectedRows, setSelectedRows] = useState<number[]>([]);
 
-    const query = useQuery({ queryKey: ["all-characters"], queryFn: getCharacters });
+    const query = useQuery({
+      queryKey: ["user-characters"],
+      queryFn: () => getCharactersByUser(user?.userName)
+    });
 
     if (query.isLoading) {
-        console.log("data loading");
+        return <div>Loading. . .</div>
     }
 
-    const rows = query.data?.map((char, index) => (
-        <Table.Tr key={index + char.characterName}>
-            <Table.Td>{char.characterId}</Table.Td>
-            <Table.Td>{char.userName}</Table.Td>
-            <Table.Td>{char.characterName}</Table.Td>
-            <Table.Td>{char.characterAge}</Table.Td>
-            <Table.Td>
-                <Group
-                    gap="xs"
-                >
-                    {char.timelineName.split(",").map((str, index) => (
-                        <Badge
-                            key={index + char.timelineName}
-                            color="green"
-                            radius="sm"
-                        >{str}</Badge>
-                    ))}
-                </Group>
-            </Table.Td>
-            <Table.Td>{char.worldName}</Table.Td>
-            <Table.Td>{char.characterBio}</Table.Td>
-        </Table.Tr>
-
-    ))
+    const rows = query.data?.map((char: Character, index) => (
+      <Table.Tr
+        key={index + char.characterName}
+        bg={selectedRows.includes(char.characterId) ? 'lightblue' : undefined}
+      >
+        {/*<Table.Td>{char.characterId}</Table.Td>*/}
+        <Table.Td>
+          <Checkbox
+            aria-label="Select row"
+            checked={selectedRows.includes(char.characterId)}
+            onChange={(event) => {
+              if (event.currentTarget.checked) {
+                setSelectedRows([...selectedRows, char.characterId]);
+              } else {
+                setSelectedRows(selectedRows.filter((position) => position !== char.characterId));
+              }
+            }}
+          />
+        </Table.Td>
+        <Table.Td>{char.userName}</Table.Td>
+        <Table.Td>{char.characterName}</Table.Td>
+        <Table.Td>{char.characterAge}</Table.Td>
+        <Table.Td>
+          <Group gap="xs">
+            {char.timelineName.split(',').map((str, index) => (
+              <Badge key={index + char.timelineName} color="green" radius="sm">
+                {str}
+              </Badge>
+            ))}
+          </Group>
+        </Table.Td>
+        <Table.Td>{char.worldName}</Table.Td>
+        <Table.Td>{char.characterBio}</Table.Td>
+      </Table.Tr>
+    ));
 
     return (
         <>
-            <Table>
+            <Table
+              striped
+              highlightOnHover
+              withTableBorder
+            >
                 <Table.Thead>
                     <Table.Tr>
-                        <Table.Th>ID</Table.Th>
+                        <Table.Th/>
                         <Table.Th>User Name</Table.Th>
                         <Table.Th>Character Name</Table.Th>
                         <Table.Th>Age</Table.Th>
