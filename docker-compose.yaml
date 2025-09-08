@@ -9,3 +9,9 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://host.docker.internal:5432/rpg_tool
     ports:
       - "8443:8443"
+
+  react:
+    image: canvas-arc-react
+    build: ./frontend
+    ports:
+      - "5173:5173"
