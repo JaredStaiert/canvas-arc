@@ -1,7 +1,7 @@
 import { Group, MultiSelect, Paper, Stack } from "@mantine/core";
 import CharTable from "@/character/CharTable";
 
-function CharacterPage() {
+function CharacterSearch() {
 
     return (
         <>
@@ -52,4 +52,4 @@ function CharacterPage() {
     );
 }
 
-export default CharacterPage;
+export default CharacterSearch;
