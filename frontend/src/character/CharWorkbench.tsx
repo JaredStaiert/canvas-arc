@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Button, Flex, Tabs } from '@mantine/core';
+import { Flex, Tabs } from '@mantine/core';
+import CharPage from "@/character/CharPage";
 
 function CharWorkbench() {
   const [activeTab, setActiveTab] = useState<string | null>('characterName');
@@ -17,7 +18,9 @@ function CharWorkbench() {
             <Tabs.Tab value="characterName">CharacterName</Tabs.Tab>
           </Tabs.List>
 
-          <Tabs.Panel value="characterName">Character component Here</Tabs.Panel>
+          <Tabs.Panel value="characterName">
+            <CharPage />
+          </Tabs.Panel>
         </Tabs>
       </Flex>
     </>
