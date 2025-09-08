@@ -7,7 +7,7 @@ import { useDisclosure } from "@mantine/hooks";
 import Dashboard from "@/dashboard/Dashboard";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./queryClient";
-import CharacterSearch from "@/character/CharacterSearch";
+import CharacterDash from "@/character/CharacterDash";
 import CharWorkbench from "@/character/CharWorkbench";
 import EventPage from "@/event/EventPage";
 import WorldDashboardPage from "@/world/WorldDashboardPage";
@@ -85,7 +85,7 @@ export default function App() {
                                   <Route path="/worlds/edit/:worldID" element={<WorldViewPage/>}/>
                                   <Route path="/worlds" element={<WorldDashboardPage/>}/>
                                   <Route path="/events" element={<EventPage/>}/>
-                                  <Route path="/characters" element={<CharacterSearch/>}/>
+                                  <Route path="/characters" element={<CharacterDash/>}/>
                                   <Route path="/activecharacter" element={<CharWorkbench/>}/>
                               </Routes>
                           </AppShell.Main>
