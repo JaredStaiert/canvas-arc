@@ -8,7 +8,7 @@ import Dashboard from "@/dashboard/Dashboard";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./queryClient";
 import CharacterPage from "@/character/CharacterPage";
-import CharActivePage from "@/character/CharActivePage";
+import CharWorkbench from "@/character/CharWorkbench";
 import EventPage from "@/event/EventPage";
 import WorldDashboardPage from "@/world/WorldDashboardPage";
 import WorldViewPage from "@/world/WorldViewPage";
@@ -86,7 +86,7 @@ export default function App() {
                                   <Route path="/worlds" element={<WorldDashboardPage/>}/>
                                   <Route path="/events" element={<EventPage/>}/>
                                   <Route path="/characters" element={<CharacterPage/>}/>
-                                  <Route path="/activecharacter" element={<CharActivePage/>}/>
+                                  <Route path="/activecharacter" element={<CharWorkbench/>}/>
                               </Routes>
                           </AppShell.Main>
                       </AppShell>
