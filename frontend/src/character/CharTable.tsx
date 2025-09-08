@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useQuery } from "@tanstack/react-query";
-import { Badge, Checkbox, Group, Table } from '@mantine/core';
+import { Badge, Button, Checkbox, Group, Table } from '@mantine/core';
 import { Character, getCharactersByUser } from '@/api/character_api';
 import { useAuth } from '@/login/AuthProvider';
 
@@ -37,6 +37,14 @@ function CharTable() {
             }}
           />
         </Table.Td>
+        <Table.Td>
+          <Button
+            variant="filled"
+            size="xs"
+            radius="xl"
+          >
+            Edit</Button>
+        </Table.Td>
         <Table.Td>{char.userName}</Table.Td>
         <Table.Td>{char.characterName}</Table.Td>
         <Table.Td>{char.characterAge}</Table.Td>
@@ -63,6 +71,7 @@ function CharTable() {
             >
                 <Table.Thead>
                     <Table.Tr>
+                        <Table.Th/>
                         <Table.Th/>
                         <Table.Th>User Name</Table.Th>
                         <Table.Th>Character Name</Table.Th>
