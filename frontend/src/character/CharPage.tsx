@@ -1,7 +1,12 @@
-import { useState } from 'react';
+import { JSX, useState } from 'react';
 import { Flex, Paper, Tabs } from '@mantine/core';
+import { CharacterDTO } from "@/api/character_api";
 
-function CharPage() {
+interface CharPageProps {
+    character: CharacterDTO;
+}
+
+function CharPage({ character }: CharPageProps): JSX.Element {
   const [activeTab, setActiveTab] = useState<string | null>('biography');
 
   return (
@@ -21,11 +26,11 @@ function CharPage() {
           </Tabs.List>
 
           <Tabs.Panel value="biography">
-            <CharPageBio/>
+            <CharPageBio />
           </Tabs.Panel>
 
           <Tabs.Panel value="events">
-            <CharPageEvents/>
+            <CharPageEvents />
           </Tabs.Panel>
 
           <Tabs.Panel value="settings">Settings tab content</Tabs.Panel>

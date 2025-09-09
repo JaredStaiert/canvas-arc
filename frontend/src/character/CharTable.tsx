@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Badge, Button, Checkbox, Group, Table } from '@mantine/core';
 import { Character, getCharactersByUser } from '@/api/character_api';
 import { useAuth } from '@/login/AuthProvider';
+import { Link } from "react-router-dom";
 
 
 function CharTable() {
@@ -18,6 +19,7 @@ function CharTable() {
         return <div>Loading. . .</div>
     }
 
+    // TODO: Need to pass an array (1 or n) numbers (character Ids) to CharWorkbench
     const rows = query.data?.map((char: Character, index) => (
       <Table.Tr
         key={index + char.characterName}
@@ -32,7 +34,8 @@ function CharTable() {
               if (event.currentTarget.checked) {
                 setSelectedRows([...selectedRows, char.characterId]);
               } else {
-                setSelectedRows(selectedRows.filter((position) => position !== char.characterId));
+                setSelectedRows(selectedRows.filter(
+                    (position) => position !== char.characterId));
               }
             }}
           />
@@ -42,6 +45,9 @@ function CharTable() {
             variant="filled"
             size="xs"
             radius="xl"
+            component={Link}
+            to="/activecharacter"
+            state={char.characterId}
           >
             Edit</Button>
         </Table.Td>
@@ -64,6 +70,16 @@ function CharTable() {
 
     return (
         <>
+            <Button
+                variant="filled"
+                size="xs"
+                radius="xl"
+                component={Link}
+                to="/activecharacter"
+                state={ selectedRows }
+            >
+                Edit Selected
+            </Button>
             <Table
               striped
               highlightOnHover
