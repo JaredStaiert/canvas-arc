@@ -20,8 +20,14 @@ public class CharacterController {
         return characterService.getAllCharactersById();
     }
 
-    @GetMapping("/character")
+    @GetMapping("/user")
     public List<CharacterSummary> getCharacterByUserName(@RequestParam String userName) {
         return characterService.getAllCharactersByUserName(userName);
+    }
+
+    @GetMapping("/id")
+    public ResponseEntity<?> getCharacterById(@RequestParam Integer[] ids) {
+
+        return ResponseEntity.ok(characterService.getMultCharacterById(ids));
     }
 }
