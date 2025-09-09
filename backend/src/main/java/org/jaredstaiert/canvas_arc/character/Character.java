@@ -37,11 +37,11 @@ public class Character {
         this.characterId = id;
     }
 
-    public User getUserName() {
+    public User getUserEntity() {
         return userName;
     }
 
-    public void setUserName(User user) {
+    public void setUserEntity(User user) {
         this.userName = user;
     }
 
