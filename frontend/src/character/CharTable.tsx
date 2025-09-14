@@ -5,7 +5,12 @@ import { Character, getCharactersByUser } from '@/api/character_api';
 import { useAuth } from '@/login/AuthProvider';
 import { Link } from "react-router-dom";
 
-
+/**
+ * Table data component for CharacterDash.tsx. GETs backend data for all
+ * characters owned by user in useAuth().
+ *
+ * @returns {JSX.Element} Rendered table component.
+ */
 function CharTable() {
     const { user } = useAuth();
     const [selectedRows, setSelectedRows] = useState<number[]>([]);
@@ -19,13 +24,11 @@ function CharTable() {
         return <div>Loading. . .</div>
     }
 
-    // TODO: Need to pass an array (1 or n) numbers (character Ids) to CharWorkbench
     const rows = query.data?.map((char: Character, index) => (
       <Table.Tr
         key={index + char.characterName}
         bg={selectedRows.includes(char.characterId) ? 'lightblue' : undefined}
       >
-        {/*<Table.Td>{char.characterId}</Table.Td>*/}
         <Table.Td>
           <Checkbox
             aria-label="Select row"
@@ -39,17 +42,6 @@ function CharTable() {
               }
             }}
           />
-        </Table.Td>
-        <Table.Td>
-          <Button
-            variant="filled"
-            size="xs"
-            radius="xl"
-            component={Link}
-            to="/activecharacter"
-            state={char.characterId}
-          >
-            Edit</Button>
         </Table.Td>
         <Table.Td>{char.userName}</Table.Td>
         <Table.Td>{char.characterName}</Table.Td>
@@ -87,7 +79,6 @@ function CharTable() {
             >
                 <Table.Thead>
                     <Table.Tr>
-                        <Table.Th/>
                         <Table.Th/>
                         <Table.Th>User Name</Table.Th>
                         <Table.Th>Character Name</Table.Th>
