@@ -1,9 +1,7 @@
 package org.jaredstaiert.canvas_arc.character;
 
-import org.jaredstaiert.canvas_arc.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
