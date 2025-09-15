@@ -27,7 +27,13 @@ public class CharacterController {
 
     @GetMapping("/id")
     public ResponseEntity<?> getCharacterById(@RequestParam Integer[] ids) {
-
+        //TODO: Change Integer[] to List<Integer>
         return ResponseEntity.ok(characterService.getMultCharacterById(ids));
+    }
+
+    @PutMapping()
+    public ResponseEntity<?> updateCharacterById(@RequestBody List<Integer> ids) {
+
+        return null;
     }
 }

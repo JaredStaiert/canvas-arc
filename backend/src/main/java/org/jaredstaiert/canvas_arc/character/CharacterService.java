@@ -51,4 +51,6 @@ public class CharacterService {
                                 character.getCharacterBio())
                 ).toList();
     }
+
+    //TODO: Add logic to update one or many Characters
 }
