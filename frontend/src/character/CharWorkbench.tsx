@@ -31,7 +31,7 @@ function CharWorkbench() {
 
   return (
     <>
-      <Flex justify="flex-start">
+      <Flex justify="flex-start" >
           <Tabs
               variant="outline"
               defaultValue="DefaultValue"
