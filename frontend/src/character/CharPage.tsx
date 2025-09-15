@@ -1,13 +1,34 @@
-import { JSX, useState } from 'react';
-import { Flex, Paper, Tabs } from '@mantine/core';
+import React, { JSX, useState } from "react";
+import {
+  Button,
+  Container,
+  Fieldset,
+  Flex,
+  Grid,
+  Group,
+  Paper,
+  Tabs,
+  TextInput,
+} from "@mantine/core";
 import { CharacterDTO } from "@/api/character_api";
+import DemoTextEditorComponent from "@/richText/DemoTextEditorComponent";
 
-interface CharPageProps {
-    character: CharacterDTO;
+type Mode = "view" | "edit";
+
+interface CharProps {
+  character: CharacterDTO;
 }
 
-function CharPage({ character }: CharPageProps): JSX.Element {
-  const [activeTab, setActiveTab] = useState<string | null>('biography');
+interface ModeStateProps {
+  mode: string;
+  setMode: React.Dispatch<React.SetStateAction<Mode>>;
+}
+
+interface BioProps extends CharProps, ModeStateProps {}
+
+function CharPage({ character }: CharProps): JSX.Element {
+  const [activeTab, setActiveTab] = useState<string | null>("biography");
+  const [mode, setMode] = useState<Mode>("view");
 
   return (
     <>
@@ -18,6 +39,8 @@ function CharPage({ character }: CharPageProps): JSX.Element {
           defaultValue="gallery"
           value={activeTab}
           onChange={setActiveTab}
+          w="75rem"
+          h="40rem"
         >
           <Tabs.List>
             <Tabs.Tab value="biography">Biography</Tabs.Tab>
@@ -26,7 +49,8 @@ function CharPage({ character }: CharPageProps): JSX.Element {
           </Tabs.List>
 
           <Tabs.Panel value="biography">
-            <CharPageBio />
+            <CharToolBar mode={mode} setMode={setMode} />
+            <CharPageBio character={character} mode={mode} setMode={setMode} />
           </Tabs.Panel>
 
           <Tabs.Panel value="events">
@@ -40,28 +64,108 @@ function CharPage({ character }: CharPageProps): JSX.Element {
   );
 }
 
-function CharPageBio() {
+/**
+ * Toolbar that renders the save button and conditionally edit / stop editing
+ * buttons.
+ * @param mode Current state.
+ * @param setMode Setter function for state.
+ */
+function CharToolBar({ mode, setMode }: ModeStateProps): JSX.Element {
+  function renderButton() {
+    switch (mode) {
+      case "view":
+        return (
+          <Button variant="default" onClick={() => setMode("edit")}>
+            Edit
+          </Button>
+        );
+      case "edit":
+        return (
+          <Button variant="default" onClick={() => setMode("view")}>
+            Finish
+          </Button>
+        );
+      default:
+        return <Button variant="default">Edit</Button>;
+    }
+  }
+
   return (
     <>
-      <Flex
-        justify="flex-start"
-        p="md"
-        align="flex-start"
-        direction="column"
-      >
-        <Paper
-          shadow="sm"
-          p="sm"
-        >
-          <p>Basic Information</p>
-        </Paper>
-        <Paper
-          shadow="sm"
-          p="sm"
-        >
-          <p>Detailed bio</p>
-        </Paper>
-      </Flex>
+      <Paper shadow="xs">
+        <Container>
+          <Group>
+            {renderButton()}
+            <Button variant="default">Save</Button>
+          </Group>
+        </Container>
+      </Paper>
+    </>
+  );
+}
+
+function CharPageBio({ character, mode, setMode }: BioProps): JSX.Element {
+  function renderBio() {
+    switch (mode) {
+      case "view":
+        return (
+          <>
+            <Grid.Col span={6}>
+              <TextInput
+                label="Name"
+                value={character.characterName}
+                style={{ pointerEvents: "none" }}
+                readOnly
+              />
+            </Grid.Col>
+            <Grid.Col span={6}>
+              <TextInput
+                label="Age"
+                value={String(character.characterAge)}
+                style={{ pointerEvents: "none" }}
+                readOnly
+              />
+            </Grid.Col>
+            <Grid.Col span={6}>
+              <TextInput
+                label="Owner"
+                value={character.userName}
+                style={{ pointerEvents: "none" }}
+                readOnly
+              />
+            </Grid.Col>
+          </>
+        );
+      case "edit":
+        return (
+          <>
+            <Grid.Col span={6}>
+              <Fieldset variant="unstyled">
+                <TextInput label="Name" placeholder={character.characterName} />
+              </Fieldset>
+            </Grid.Col>
+            <Grid.Col span={6}>
+              <Fieldset variant="unstyled">
+                <TextInput label="Age" placeholder={String(character.characterAge)} />
+              </Fieldset>
+            </Grid.Col>
+            <Grid.Col span={6}>
+              <Fieldset variant="unstyled">
+                <TextInput label="Ownser" placeholder={character.userName} />
+              </Fieldset>
+            </Grid.Col>
+          </>
+        );
+      default:
+        return <></>;
+    }
+  }
+
+  return (
+    <>
+      <Grid grow gutter="xl" p="xl">
+        {renderBio()}
+      </Grid>
     </>
   );
 }
@@ -69,7 +173,9 @@ function CharPageBio() {
 function CharPageEvents() {
   return (
     <>
-      <p>Events the Character has taken part in.</p>
+      <Grid grow gutter="xl" p="xl">
+          <DemoTextEditorComponent/>
+      </Grid>
     </>
   );
 }

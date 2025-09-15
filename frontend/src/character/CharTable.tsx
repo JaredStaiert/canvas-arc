@@ -1,17 +1,18 @@
-import { useState } from 'react';
+import { JSX, useState } from 'react';
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 import { Badge, Button, Checkbox, Group, Table } from '@mantine/core';
 import { Character, getCharactersByUser } from '@/api/character_api';
 import { useAuth } from '@/login/AuthProvider';
-import { Link } from "react-router-dom";
+
 
 /**
  * Table data component for CharacterDash.tsx. GETs backend data for all
  * characters owned by user in useAuth().
  *
- * @returns {JSX.Element} Rendered table component.
+ * @returns Rendered table component.
  */
-function CharTable() {
+function CharTable(): JSX.Element {
     const { user } = useAuth();
     const [selectedRows, setSelectedRows] = useState<number[]>([]);
 

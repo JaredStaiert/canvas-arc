@@ -1,4 +1,6 @@
 import '@mantine/core/styles.css';
+//tiptap must be below core
+import '@mantine/tiptap/styles.css';
 
 import { AppShell, Burger, Group, MantineProvider, NavLink } from '@mantine/core';
 import { theme } from './theme';
