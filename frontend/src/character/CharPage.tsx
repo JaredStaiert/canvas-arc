@@ -24,11 +24,18 @@ interface ModeStateProps {
   setMode: React.Dispatch<React.SetStateAction<Mode>>;
 }
 
-interface BioProps extends CharProps, ModeStateProps {}
+interface DataStateProps {
+  edit: CharacterDTO;
+  setEdit: React.Dispatch<React.SetStateAction<CharacterDTO>>;
+}
+
+interface BioProps extends CharProps, ModeStateProps, DataStateProps {}
 
 function CharPage({ character }: CharProps): JSX.Element {
+  const [edit, setEdit] = useState<CharacterDTO>(character);
   const [activeTab, setActiveTab] = useState<string | null>("biography");
   const [mode, setMode] = useState<Mode>("view");
+  //TODO: CHECK for any other instances of character state needing to be passed.
 
   return (
     <>
@@ -50,7 +57,13 @@ function CharPage({ character }: CharProps): JSX.Element {
 
           <Tabs.Panel value="biography">
             <CharToolBar mode={mode} setMode={setMode} />
-            <BioSection character={character} mode={mode} setMode={setMode} />
+            <BioSection
+              character={character}
+              mode={mode}
+              setMode={setMode}
+              edit={edit}
+              setEdit={setEdit}
+            />
           </Tabs.Panel>
 
           <Tabs.Panel value="events">
@@ -104,13 +117,21 @@ function CharToolBar({ mode, setMode }: ModeStateProps): JSX.Element {
   );
 }
 
-function BioSection({ character, mode }: BioProps): JSX.Element {
+function BioSection({ character, mode, setMode, edit, setEdit }: BioProps): JSX.Element {
   function bioRenderSwitch(): JSX.Element {
     switch (mode) {
       case "view":
         return <BioSectionView character={character} />;
       case "edit":
-        return <BioSectionEdit character={character} />;
+        return (
+          <BioSectionEdit
+            character={character}
+            mode={mode}
+            setMode={setMode}
+            edit={edit}
+            setEdit={setEdit}
+          />
+        );
       default:
         return <>Error</>;
     }
@@ -159,8 +180,9 @@ function BioSectionView({ character }: CharProps): JSX.Element {
   );
 }
 
-function BioSectionEdit({ character }: CharProps): JSX.Element {
-  return (
+function BioSectionEdit({ character, edit, setEdit }: BioProps): JSX.Element {
+  //TODO: ADD handling for setting edit and mutation
+    return (
     <>
       <Grid.Col span={6}>
         <Fieldset variant="unstyled">

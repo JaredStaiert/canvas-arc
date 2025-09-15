@@ -28,6 +28,7 @@ function CharWorkbench() {
     return <div>Loading...</div>;
   }
 
+  // character objects are passed
   return (
     <>
       <Flex justify="flex-start">
