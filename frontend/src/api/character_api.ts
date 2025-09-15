@@ -11,11 +11,11 @@ export type Character = {
 };
 
 export interface CharacterDTO {
-    characterId: number;
-    userName: string;
-    characterName: string;
-    characterAge: number;
-    characterBio: string;
+  characterId: number;
+  userName: string;
+  characterName: string;
+  characterAge: number;
+  characterBio: string;
 }
 // TODO: update Character type (and backend) to more universally apply (as in CharWorkBench)
 
@@ -44,11 +44,11 @@ export async function getCharactersByUser(userName: string | undefined): Promise
 
 export async function getCharacterById(ids: number[]): Promise<CharacterDTO[]> {
   const url = new URL(`${CHARACTER_URL}id`);
-  ids.forEach(id => url.searchParams.append("ids", String(id)));
+  ids.forEach((id) => url.searchParams.append('ids', String(id)));
   const response = await fetch(url, { credentials: 'include' });
 
   if (!response.ok) {
     throw new Error(response.statusText);
   }
-    return response.json();
+  return response.json();
 }
