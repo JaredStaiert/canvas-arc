@@ -50,7 +50,7 @@ function CharPage({ character }: CharProps): JSX.Element {
 
           <Tabs.Panel value="biography">
             <CharToolBar mode={mode} setMode={setMode} />
-            <CharPageBio character={character} mode={mode} setMode={setMode} />
+            <BioSection character={character} mode={mode} setMode={setMode} />
           </Tabs.Panel>
 
           <Tabs.Panel value="events">
@@ -104,68 +104,79 @@ function CharToolBar({ mode, setMode }: ModeStateProps): JSX.Element {
   );
 }
 
-function CharPageBio({ character, mode, setMode }: BioProps): JSX.Element {
-  function renderBio() {
+function BioSection({ character, mode }: BioProps): JSX.Element {
+  function bioRenderSwitch() {
     switch (mode) {
       case "view":
-        return (
-          <>
-            <Grid.Col span={6}>
-              <TextInput
-                label="Name"
-                value={character.characterName}
-                style={{ pointerEvents: "none" }}
-                readOnly
-              />
-            </Grid.Col>
-            <Grid.Col span={6}>
-              <TextInput
-                label="Age"
-                value={String(character.characterAge)}
-                style={{ pointerEvents: "none" }}
-                readOnly
-              />
-            </Grid.Col>
-            <Grid.Col span={6}>
-              <TextInput
-                label="Owner"
-                value={character.userName}
-                style={{ pointerEvents: "none" }}
-                readOnly
-              />
-            </Grid.Col>
-          </>
-        );
+        return <BioSectionView character={character} />;
       case "edit":
-        return (
-          <>
-            <Grid.Col span={6}>
-              <Fieldset variant="unstyled">
-                <TextInput label="Name" placeholder={character.characterName} />
-              </Fieldset>
-            </Grid.Col>
-            <Grid.Col span={6}>
-              <Fieldset variant="unstyled">
-                <TextInput label="Age" placeholder={String(character.characterAge)} />
-              </Fieldset>
-            </Grid.Col>
-            <Grid.Col span={6}>
-              <Fieldset variant="unstyled">
-                <TextInput label="Ownser" placeholder={character.userName} />
-              </Fieldset>
-            </Grid.Col>
-          </>
-        );
+        return <BioSectionEdit character={character} />;
       default:
-        return <></>;
+        return <>Error</>;
     }
   }
 
   return (
     <>
       <Grid grow gutter="xl" p="xl">
-        {renderBio()}
+        {bioRenderSwitch()}
+        <Grid.Col span={12}>
+          <DemoTextEditorComponent />
+        </Grid.Col>
       </Grid>
+    </>
+  );
+}
+
+function BioSectionView({ character }: CharProps): JSX.Element {
+  return (
+    <>
+      <Grid.Col span={6}>
+        <TextInput
+          label="Name"
+          value={character.characterName}
+          style={{ pointerEvents: "none" }}
+          readOnly
+        />
+      </Grid.Col>
+      <Grid.Col span={6}>
+        <TextInput
+          label="Age"
+          value={String(character.characterAge)}
+          style={{ pointerEvents: "none" }}
+          readOnly
+        />
+      </Grid.Col>
+      <Grid.Col span={6}>
+        <TextInput
+          label="Owner"
+          value={character.userName}
+          style={{ pointerEvents: "none" }}
+          readOnly
+        />
+      </Grid.Col>
+    </>
+  );
+}
+
+function BioSectionEdit({ character }: CharProps): JSX.Element {
+  return (
+    <>
+      <Grid.Col span={6}>
+        <Fieldset variant="unstyled">
+          <TextInput label="Name" placeholder={character.characterName} />
+        </Fieldset>
+      </Grid.Col>
+      <Grid.Col span={6}>
+        <Fieldset variant="unstyled">
+          <TextInput label="Age" placeholder={String(character.characterAge)} />
+        </Fieldset>
+      </Grid.Col>
+      <Grid.Col span={6}>
+        <Fieldset variant="unstyled">
+          <TextInput label="Ownser" placeholder={character.userName} />
+        </Fieldset>
+      </Grid.Col>
     </>
   );
 }
@@ -174,7 +185,7 @@ function CharPageEvents() {
   return (
     <>
       <Grid grow gutter="xl" p="xl">
-          <DemoTextEditorComponent/>
+        <p>Event</p>
       </Grid>
     </>
   );
