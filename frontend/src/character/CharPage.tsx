@@ -105,7 +105,7 @@ function CharToolBar({ mode, setMode }: ModeStateProps): JSX.Element {
 }
 
 function BioSection({ character, mode }: BioProps): JSX.Element {
-  function bioRenderSwitch() {
+  function bioRenderSwitch(): JSX.Element {
     switch (mode) {
       case "view":
         return <BioSectionView character={character} />;
