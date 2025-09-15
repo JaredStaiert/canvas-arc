@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "react-router-dom";
-import { Flex, Tabs } from '@mantine/core';
+import { Flex, Tabs } from "@mantine/core";
 import { getCharacterById } from "@/api/character_api";
-import CharPage from '@/character/CharPage';
-
+import CharPage from "@/character/CharPage";
 
 function CharWorkbench() {
   const [activeTab, setActiveTab] = useState<string | null>(null);
@@ -15,69 +14,43 @@ function CharWorkbench() {
   const sortedChars = [...arrayFromState].sort((a, b) => a - b);
 
   const query = useQuery({
-      queryKey: ["character-batch", sortedChars],
-      queryFn: () => getCharacterById(sortedChars)
+    queryKey: ["character-batch", sortedChars],
+    queryFn: () => getCharacterById(sortedChars),
   });
 
   useEffect(() => {
     if (query.data && query.data.length > 0 && !activeTab) {
-        setActiveTab(query.data[0].characterName)
+      setActiveTab(query.data[0].characterName);
     }
-  }, [query])
+  }, [query]);
 
-    if (query.isLoading) {
-      return <div>Loading...</div>;
+  if (query.isLoading) {
+    return <div>Loading...</div>;
   }
 
   return (
     <>
-      <Flex justify="flex-start" >
-          <Tabs
-              variant="outline"
-              defaultValue="DefaultValue"
-              value={activeTab}
-              onChange={setActiveTab}
-            >
-              <Tabs.List>
-                  {query.data?.map((char) => (
-                      <Tabs.Tab
-                          key={`charWorkbenchTab-${char.characterId}`}
-                          value={char.characterName}
-                      >
-                          {char.characterName}
-                      </Tabs.Tab>
-                  ))}
-              </Tabs.List>
+      <Flex justify="flex-start">
+        <Tabs
+          variant="outline"
+          defaultValue="DefaultValue"
+          value={activeTab}
+          onChange={setActiveTab}
+        >
+          <Tabs.List>
+            {query.data?.map((char) => (
+              <Tabs.Tab key={`charWorkbenchTab-${char.characterId}`} value={char.characterName}>
+                {char.characterName}
+              </Tabs.Tab>
+            ))}
+          </Tabs.List>
 
-                  {query.data?.map((char) => (
-                    <Tabs.Panel
-                        key={`charWorkbenchPanel-${char.characterId}`}
-                        value={char.characterName}
-                    >
-                      <CharPage
-                        key={`charPage-${char.characterId}`}
-                        character={char}
-                    />
-                    </Tabs.Panel>
-                  ))}
-
-              {/*TODO allow multiple or no character tabs*/}
-
-          </Tabs>
-      {/*<Tabs*/}
-      {/*    variant="outline"*/}
-      {/*    defaultValue="DefaultValue"*/}
-      {/*    value={activeTab}*/}
-      {/*    onChange={setActiveTab}*/}
-      {/*  >*/}
-      {/*    <Tabs.List>*/}
-      {/*      <Tabs.Tab value="characterName">CharacterName</Tabs.Tab>*/}
-      {/*    </Tabs.List>*/}
-
-      {/*    <Tabs.Panel value="characterName">*/}
-      {/*      <CharPage characterId={charEditList} />*/}
-      {/*    </Tabs.Panel>*/}
-      {/*  </Tabs>*/}
+          {query.data?.map((char) => (
+            <Tabs.Panel key={`charWorkbenchPanel-${char.characterId}`} value={char.characterName}>
+              <CharPage key={`charPage-${char.characterId}`} character={char} />
+            </Tabs.Panel>
+          ))}
+        </Tabs>
       </Flex>
     </>
   );
