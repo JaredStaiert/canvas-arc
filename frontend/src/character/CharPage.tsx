@@ -67,7 +67,7 @@ function CharPage({ character }: CharProps): JSX.Element {
           </Tabs.Panel>
 
           <Tabs.Panel value="events">
-            <CharPageEvents />
+            <EventSection />
           </Tabs.Panel>
 
           <Tabs.Panel value="settings">Settings tab content</Tabs.Panel>
@@ -203,14 +203,22 @@ function BioSectionEdit({ character, edit, setEdit }: BioProps): JSX.Element {
   );
 }
 
-function CharPageEvents() {
+function EventSection() {
   return (
     <>
       <Grid grow gutter="xl" p="xl">
-        <p>Event</p>
+        <EventTimelines/>
       </Grid>
     </>
   );
+}
+
+function EventTimelines() {
+    return (
+        <>
+            <p>Timelines</p>
+        </>
+    );
 }
 
 export default CharPage;
