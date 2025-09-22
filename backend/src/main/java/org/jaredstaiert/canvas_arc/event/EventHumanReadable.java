@@ -4,7 +4,7 @@ import org.jaredstaiert.canvas_arc.timeline.Timeline;
 
 import java.time.LocalDate;
 
-public interface EventProj {
+public interface EventHumanReadable {
     int getEventId();
     Timeline getTimeline();
     String getLocationName();

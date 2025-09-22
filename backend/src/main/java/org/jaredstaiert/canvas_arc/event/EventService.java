@@ -26,7 +26,7 @@ public class EventService {
      * more meaningful name fields.
      * @return List of Event DTO objects
      */
-    public List<EventProj> getAllEventsHumanReadable() {
+    public List<EventHumanReadable> getAllEventsHumanReadable() {
         return eventRepository.findEventsHumanReadable();
     }
 

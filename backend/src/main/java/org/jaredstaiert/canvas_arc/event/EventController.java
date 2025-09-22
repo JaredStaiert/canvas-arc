@@ -16,7 +16,7 @@ public class EventController {
     }
 
     @GetMapping("/all-events")
-    public List<EventProj> getAllEvents() {
+    public List<EventHumanReadable> getAllEvents() {
         return eventService.getAllEventsHumanReadable();
     }
 
