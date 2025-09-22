@@ -5,8 +5,6 @@ import {
   Badge,
   Box,
   Button,
-  Card,
-  Flex,
   Grid,
   Group,
   Image,
