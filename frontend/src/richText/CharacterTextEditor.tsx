@@ -5,10 +5,13 @@ import StarterKit from '@tiptap/starter-kit';
 import TextAlign from '@tiptap/extension-text-align';
 import Superscript from '@tiptap/extension-superscript';
 import SubScript from '@tiptap/extension-subscript';
+import { useState } from "react";
 
 const content = "";
 
-function DemoTextEditorComponent() {
+function CharacterTextEditor() {
+    const [isEditable, setIsEditable] = useState(false);
+
     const editor = useEditor({
         shouldRerenderOnTransaction: true,
         extensions: [
@@ -20,6 +23,7 @@ function DemoTextEditorComponent() {
             TextAlign.configure({ types: ['heading', 'paragraph'] }),
         ],
         content,
+        editable: isEditable
     });
 
     return (
@@ -78,4 +82,4 @@ function DemoTextEditorComponent() {
 // https://mantine.dev/x/tiptap/#installation
 
 
-export default DemoTextEditorComponent;
+export default CharacterTextEditor;

@@ -11,7 +11,7 @@ import {
   TextInput,
 } from "@mantine/core";
 import { CharacterDTO } from "@/api/character_api";
-import DemoTextEditorComponent from "@/richText/DemoTextEditorComponent";
+import CharacterTextEditor from "@/richText/CharacterTextEditor";
 
 type Mode = "view" | "edit";
 
@@ -142,7 +142,7 @@ function BioSection({ character, mode, setMode, edit, setEdit }: BioProps): JSX.
       <Grid grow gutter="xl" p="xl">
         {bioRenderSwitch()}
         <Grid.Col span={12}>
-          <DemoTextEditorComponent />
+          <CharacterTextEditor />
         </Grid.Col>
       </Grid>
     </>
@@ -180,22 +180,24 @@ function BioSectionView({ character }: CharProps): JSX.Element {
   );
 }
 
-function BioSectionEdit({ character, edit, setEdit }: BioProps): JSX.Element {
+function BioSectionEdit({ character, mode, edit, setEdit }: BioProps): JSX.Element {
   //TODO: ADD handling for setting edit and mutation
+
+
     return (
     <>
       <Grid.Col span={6}>
-        <Fieldset variant="unstyled">
+        <Fieldset variant="unstyled" bg={mode === "edit" ? "beige" : ""}>
           <TextInput label="Name" placeholder={character.characterName} />
         </Fieldset>
       </Grid.Col>
       <Grid.Col span={6}>
-        <Fieldset variant="unstyled">
+        <Fieldset variant="unstyled" bg={mode === "edit" ? "beige" : ""}>
           <TextInput label="Age" placeholder={String(character.characterAge)} />
         </Fieldset>
       </Grid.Col>
       <Grid.Col span={6}>
-        <Fieldset variant="unstyled">
+        <Fieldset variant="unstyled" bg={mode === "edit" ? "beige" : ""}>
           <TextInput label="Ownser" placeholder={character.userName} />
         </Fieldset>
       </Grid.Col>
