@@ -68,18 +68,9 @@ export default function App() {
                               />
                               <NavLink
                                 label="Characters"
-                                childrenOffset={28}
-                              >
-                                  <NavLink
-                                      label="All Characters"
-                                      component={Link}
-                                      to="/characters"
-                                  />
-                                  <NavLink
-                                    label="Active Character"
-                                    component={Link}
-                                    to="/activecharacter" />
-                              </NavLink>
+                                component={Link}
+                                to="/characters"
+                               />
                           </AppShell.Navbar>
                           <AppShell.Main>
                               <Routes>
