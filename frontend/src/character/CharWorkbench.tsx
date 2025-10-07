@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "react-router-dom";
 import { Flex, Tabs } from "@mantine/core";
 import { getCharacterById } from "@/api/character_api";
-import CharPage from "@/character/CharPage";
+import CharActiveEditPage from "@/character/CharActiveEditPage";
 
 function CharWorkbench() {
   const [activeTab, setActiveTab] = useState<string | null>(null);
@@ -48,7 +48,7 @@ function CharWorkbench() {
 
           {query.data?.map((char) => (
             <Tabs.Panel key={`charWorkbenchPanel-${char.characterId}`} value={char.characterName}>
-              <CharPage key={`charPage-${char.characterId}`} character={char} />
+              <CharActiveEditPage key={`charPage-${char.characterId}`} character={char} />
             </Tabs.Panel>
           ))}
         </Tabs>
